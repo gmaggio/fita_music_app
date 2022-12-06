@@ -1,0 +1,6 @@
+{
+  "appTitle": "fita_music_app",
+  "@appTitle": {
+    "description": "The title of the application"
+  }
+}
