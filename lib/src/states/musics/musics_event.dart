@@ -1,0 +1,29 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+part of 'musics_bloc.dart';
+
+@immutable
+abstract class MusicsEvent {
+  const MusicsEvent();
+}
+
+class MusicsInit extends MusicsEvent {}
+
+class MusicsSearchInputChanged extends MusicsEvent {
+  final String keywords;
+
+  const MusicsSearchInputChanged(this.keywords);
+}
+
+class MusicsExecuteSearch extends MusicsEvent {
+  final String keywords;
+
+  const MusicsExecuteSearch(this.keywords);
+}
+
+class MusicsSelectSong extends MusicsEvent {
+  final MusicData music;
+
+  const MusicsSelectSong(this.music);
+}
+
+class MusicsToggleSelectedSong extends MusicsEvent {}
