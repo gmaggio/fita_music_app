@@ -17,7 +17,9 @@ class MusicPlayer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final AudioPlayer audioPlayer = context.read<MusicsBloc>().audioPlayer;
+
     final double screenBottomPadding = MediaQuery.of(context).padding.bottom;
+
     final ThemeData theme = Theme.of(context);
     final Color defaultContentColor = theme.colorScheme.onSecondary;
 
@@ -47,13 +49,14 @@ class MusicPlayer extends StatelessWidget {
             ),
             child: Row(
               children: [
+                // Music Details
                 ..._musicDetails(
                   theme: theme,
                   musicSelected: musicSelected,
                 ),
                 const SizedBox(width: 16),
 
-                // Controls
+                // Music Controller
                 StreamBuilder<PlayerState>(
                   stream: audioPlayer.playerStateStream,
                   builder: (context, snapshot) {
@@ -131,7 +134,7 @@ class MusicPlayer extends StatelessWidget {
             ),
             const SizedBox(height: 8),
 
-            // The artist
+            // The Artist
             Text(
               musicSelected.artistName,
               style: theme.textTheme.subtitle2,
@@ -162,14 +165,16 @@ class MusicPlayer extends StatelessWidget {
 
     return BlocConsumer<MusicsBloc, MusicsState>(
       listenWhen: (previous, current) {
+        // Checks for audio error.
         return previous.isAudioError != current.isAudioError;
       },
       listener: (context, state) {
+        // Gives notification if there's audio error.
         if (state.isAudioError) {
           _showErrorSnackBar(context);
         }
       },
-      builder: (context, state) {
+      builder: (context, _) {
         if (processingState == ProcessingState.loading ||
             processingState == ProcessingState.buffering) {
           return SizedBox(
@@ -206,6 +211,8 @@ class MusicPlayer extends StatelessWidget {
     );
   }
 
+  // ACTIONS
+
   void _showErrorSnackBar(BuildContext context) {
     final ThemeData theme = Theme.of(context);
 
@@ -218,6 +225,7 @@ class MusicPlayer extends StatelessWidget {
             style: TextStyle(
               color: theme.colorScheme.onPrimary,
             ),
+            textAlign: TextAlign.center,
           ),
           backgroundColor: theme.colorScheme.primary,
         );

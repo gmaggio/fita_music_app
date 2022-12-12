@@ -22,6 +22,7 @@ class MusicItem extends StatelessWidget {
 
     return BlocBuilder<MusicsBloc, MusicsState>(
       buildWhen: (previous, current) {
+        // Makes sure items only rebuild if there's changes.
         if (previous.musicSelected?.trackId != current.musicSelected?.trackId) {
           return [
             previous.musicSelected?.trackId,
@@ -92,7 +93,7 @@ class MusicItem extends StatelessWidget {
             children: [
               const SizedBox(height: 8),
 
-              // The artist
+              // The Artist
               Text(
                 musicData.artistName,
                 style: theme.textTheme.subtitle1?.copyWith(

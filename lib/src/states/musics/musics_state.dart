@@ -10,10 +10,10 @@ class MusicsState {
   /// The currently active music.
   final MusicData? musicSelected;
 
-  /// Detects the status of the data being loaded.
+  /// The status of the searched data being loaded.
   final LoadStatus searchStatus;
 
-  /// checks the music player for error.
+  /// Checks the music player for error.
   final bool isAudioError;
 
   const MusicsState._({
@@ -61,7 +61,9 @@ class MusicsState {
   }
 
   MusicsState asMusicError() {
-    return copyWith(isAudioError: true);
+    return copyWith(
+      isAudioError: true,
+    );
   }
 
   //

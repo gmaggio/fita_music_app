@@ -30,13 +30,12 @@ class _SearchBarState extends State<SearchBar> {
   @override
   Widget build(BuildContext context) {
     final double screenTopPadding = MediaQuery.of(context).padding.top;
+
     final ThemeData theme = Theme.of(context);
     final Color defaultContentColor = theme.colorScheme.onPrimary;
 
     return DefaultTextStyle.merge(
-      style: TextStyle(
-        color: defaultContentColor,
-      ),
+      style: TextStyle(color: defaultContentColor),
       child: Container(
         padding: const EdgeInsets.all(28).copyWith(
           top: 20 + screenTopPadding,
@@ -51,7 +50,7 @@ class _SearchBarState extends State<SearchBar> {
         clipBehavior: Clip.antiAlias,
         child: Builder(
           builder: (context) {
-            final fieldBorder = UnderlineInputBorder(
+            final UnderlineInputBorder fieldBorder = UnderlineInputBorder(
               borderSide: BorderSide(
                 color: defaultContentColor.withOpacity(.7),
               ),

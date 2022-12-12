@@ -40,6 +40,7 @@ class MusicList extends StatelessWidget {
         return MusicsListSelector(
           builder: (musics) {
             if (musics == null) {
+              // Initial View
               return Center(
                 child: Icon(
                   Icons.arrow_circle_up,
@@ -52,6 +53,7 @@ class MusicList extends StatelessWidget {
                 ),
               );
             } else if (musics.isEmpty) {
+              // Empty View
               return const Center(
                 child: Text(
                   'MUSIC NOT FOUND',

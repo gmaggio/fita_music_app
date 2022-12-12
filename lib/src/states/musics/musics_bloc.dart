@@ -65,11 +65,13 @@ class MusicsBloc extends Bloc<MusicsEvent, MusicsState> {
       ),
       preload: true,
     )
-        .catchError((error) {
-      isAudioError = true;
-      audioPlayer.stop();
-      debugPrint('Exception: $error');
-    });
+        .catchError(
+      (error) {
+        isAudioError = true;
+        audioPlayer.stop();
+        debugPrint('Exception: $error');
+      },
+    );
 
     if (isAudioError) {
       emit(state.asMusicError());

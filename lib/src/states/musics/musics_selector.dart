@@ -50,13 +50,3 @@ class MusicsSelectedSelector extends MusicsStateSelector<MusicData?> {
           builder: builder,
         );
 }
-
-class MusicsErrorSelector extends MusicsStateSelector<bool> {
-  MusicsErrorSelector({
-    super.key,
-    required Widget Function(bool isAudioError) builder,
-  }) : super(
-          selector: (state) => state.isAudioError,
-          builder: builder,
-        );
-}

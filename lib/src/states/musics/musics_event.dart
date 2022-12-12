@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 part of 'musics_bloc.dart';
 
 @immutable
@@ -25,5 +24,3 @@ class MusicsSelectSong extends MusicsEvent {
 
   const MusicsSelectSong(this.music);
 }
-
-class MusicsToggleSelectedSong extends MusicsEvent {}
